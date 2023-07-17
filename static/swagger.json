@@ -1,0 +1,83 @@
+{
+     "openapi": "3.0.2",
+     "info": {
+          "title": "Crypto market analyzer API",
+          "version": "1.0"
+     },
+     "servers": [
+          {
+               "url": "http://localhost:5000/"
+          }
+     ],
+     "paths": {
+          "/api/fetch_data": {
+               "get": {
+                    "summary": "Fetch data from Bittrex API",
+                    "responses": {
+                         "200": {
+                              "description": "Successful operation",
+                              "content": {
+                                   "application/json": {
+                                        "schema": {
+                                             "$ref": "#/components/schemas/MarketData"
+                                        }
+                                   }
+                              }
+                         }
+                    }
+               }
+          },
+          "/api/store_data": {
+               "post": {
+                    "summary": "Store data in MySQL database",
+                    "requestBody": {
+                         "content": {
+                              "application/json": {
+                                   "schema": {
+                                        "$ref": "#/components/schemas/MarketData"
+                                   }
+                              }
+                         }
+                    },
+                    "responses": {
+                         "200": {
+                              "description": "Successful operation",
+                              "content": {
+                                   "application/json": {
+                                        "schema": {
+                                             "$ref": "#/components/schemas/Message"
+                                        }
+                                   }
+                              }
+                         }
+                    }
+               }
+          }
+     },
+     "components": {
+          "schemas": {
+               "MarketData": {
+                    "type": "object",
+                    "properties": {
+                         "name": {
+                              "type": "string"
+                         },
+                         "price": {
+                              "type": "number"
+                         },
+                         "volume": {
+                              "type": "number"
+                         }
+                    }
+               },
+               "Message": {
+                    "type": "object",
+                    "properties": {
+                         "message": {
+                              "type": "string"
+                         }
+                    }
+               }
+          }
+     }
+}

@@ -1,0 +1,25 @@
+# Python specific
+*.pyc
+__pycache__/
+venv/
+virenv/
+*.egg-info/
+dist/
+build/
+.idea/
+
+# VS Code specific
+.vscode/
+*.code-workspace
+.settings/
+
+# PyCharm specific
+*.iml
+.idea/
+*.pyc
+out/
+
+# Other common files and directories
+.DS_Store
+*.log
+.env
